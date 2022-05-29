@@ -11,7 +11,10 @@ class _loginState extends State<home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text("helo"),
+      body: SafeArea(
+          child: Container(
+        child: Text("data"),
+      )),
     );
   }
 }
