@@ -6,6 +6,11 @@ TextStyle Klogo = GoogleFonts.bebasNeue(
   fontSize: 60,
   fontStyle: FontStyle.normal,
 );
+TextStyle Kfont = GoogleFonts.fredokaOne(
+  fontWeight: FontWeight.w500,
+  fontSize: 60,
+  fontStyle: FontStyle.normal,
+);
 
 const kTextFieldDecoration = InputDecoration(
   hintText: 'Enter a value',
