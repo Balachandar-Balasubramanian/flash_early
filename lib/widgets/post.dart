@@ -9,7 +9,7 @@ class post extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
       child: Container(
-        height: 100,
+        height: 200,
         width: double.infinity,
         child: Material(
           elevation: 3.0,
