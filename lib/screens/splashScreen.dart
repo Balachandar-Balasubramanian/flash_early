@@ -39,12 +39,13 @@ class _splashScreenState extends State<splashScreen> {
               ),
             ),
             Text(
-              style: Klogo,
               "Turf Flash",
+              style: Klogo,
+
             )
           ],
         ),
       ),
-    ));
+    ),);
   }
 }

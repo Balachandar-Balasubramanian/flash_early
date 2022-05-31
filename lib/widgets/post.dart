@@ -71,7 +71,7 @@ class post extends StatelessWidget {
                       SizedBox(
                         width: 10,
                       ),
-                      Text("31/05/22 Sunday"),
+                      Text("7's"),
                     ],
                   ),
                 )
