@@ -1,9 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:turf_flash/constants.dart';
 import 'package:turf_flash/widgets/post.dart';
+import 'home_body.dart';
+import 'host_body.dart';
 
 class home extends StatefulWidget {
   static String id = "home";
@@ -14,17 +14,23 @@ class home extends StatefulWidget {
 
 class _loginState extends State<home> {
   String user = "Chandru";
-  List<Image> carousel_ads = [
-    Image.asset("images/ad1.jpg"),
-    Image.asset("images/ad2.jpg"),
-    Image.asset("images/ad3.jpg"),
-    Image.asset("images/ad4.jpg"),
-    Image.asset("images/ad5.jpg")
+   int _selectedIndex = 0;
+  static List<Widget> _widgetOptions = <Widget>[
+    home_body(),
+    host_body(),
+    home_body(),
   ];
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         titleSpacing: 0.0,
         leading: Icon(
           Icons.electric_bolt,
@@ -42,8 +48,8 @@ class _loginState extends State<home> {
         // ),
         title: Column(
           children: [
-            Text("Welcome"),
-            Text(user),
+            Text("Welcome",style: TextStyle(color: Colors.blueAccent),),
+            Text(user,style: TextStyle(color: Colors.blueAccent),),
           ],
         ),
         actions: [
@@ -52,39 +58,32 @@ class _loginState extends State<home> {
             child: Icon(
               Icons.quickreply,
               size: 30,
-              color: Colors.white,
+              color: Colors.blueAccent,
             ),
           ),
         ],
       ),
       body: SafeArea(
-          child: SingleChildScrollView(
-        child: Column(
-          children: [
-            CarouselSlider(
-              items: carousel_ads,
-              options: CarouselOptions(
-                autoPlay: true,
-                enlargeCenterPage: true,
-                aspectRatio: 2.0,
-                enlargeStrategy: CenterPageEnlargeStrategy.height,
-              ),
-            ),
-            ListView(
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              children: [
-                post(),
-                post(),
-                post(),
-                post(),
-                post(),
-                post(),
-              ],
-            )
-          ],
-        ),
-      )),
-    );
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_box),
+            label: 'Host',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.badge),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Color.fromARGB(255, 4, 230, 15),
+        onTap: _onItemTapped,
+      ),);
   }
 }
