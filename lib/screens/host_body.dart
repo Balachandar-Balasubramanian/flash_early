@@ -120,7 +120,7 @@ class _host_bodyState extends State<host_body> {
                 children: [
                   Material(
                     color: Colors.blueAccent,
-                    elevation: 5,
+                    elevation: 6,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(6),
                       bottomLeft: Radius.circular(6),
