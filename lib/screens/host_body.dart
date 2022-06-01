@@ -170,7 +170,7 @@ class _host_bodyState extends State<host_body> {
             height: 10,
           ),
           RoundedButton(
-              title: 'Hosts', colour: Colors.blueAccent, onPressed: () {})
+              title: 'Host', colour: Colors.blueAccent, onPressed: () {})
         ],
       ),
     );

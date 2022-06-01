@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:turf_flash/widgets/post.dart';
 import 'home_body.dart';
 import 'host_body.dart';
+import 'profile_body.dart';
+import 'package:turf_flash/services/authenticate.dart';
 
 class home extends StatefulWidget {
   static String id = "home";
@@ -18,14 +20,20 @@ class _loginState extends State<home> {
   static List<Widget> _widgetOptions = <Widget>[
     home_body(),
     host_body(),
-    home_body(),
+    profile_body()
   ];
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getCurrentUSer();
 
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

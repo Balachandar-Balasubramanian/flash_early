@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:turf_flash/constants.dart';
-import 'package:turf_flash/services/firebase.dart';
+import 'package:turf_flash/services/authenticate.dart';
 import 'package:turf_flash/widgets/roundedbutton.dart';
+import 'home.dart';
 
 class register extends StatefulWidget {
   static String id = "register";
@@ -107,14 +108,15 @@ class _loginState extends State<register> {
             RoundedButton(
               title: 'Sign Up',
               colour: Colors.blue,
-              onPressed: () {
+              onPressed: () async {
                 if (username != null &&
                     Email != null &&
                     pass != null &&
                     rpass != null) {
-                  bool t = signup(username, Email, pass);
+                  bool t = await signup(username!, Email!, pass!);
+                  print(t);
                   if (t == true) {
-                    Navigator.pop(context);
+                    Navigator.pushNamed(context, home.id);
                   }
                 } else {
                   showCupertinoModalPopup<void>(
