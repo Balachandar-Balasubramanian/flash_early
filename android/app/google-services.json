@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "402256954379",
+    "project_id": "turf-flash",
+    "storage_bucket": "turf-flash.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402256954379:android:574994d889bdf2a490f30e",
+        "android_client_info": {
+          "package_name": "com.example.turf_flash"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402256954379-7sqtu8rq71eoiqnqt15vcj2uihdpsgfg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdY8UWI5yXCQchiRq8hycJATjzyvYQzwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402256954379-7sqtu8rq71eoiqnqt15vcj2uihdpsgfg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
