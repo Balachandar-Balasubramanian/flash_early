@@ -15,6 +15,8 @@ Future<bool> signup(String displayname, String emailid, String password) async {
     var newuser = await _auth.createUserWithEmailAndPassword(
         email: emailid, password: password);
     print(newuser);
+    User? current_user = getCurrentUser();
+    current_user!.updateDisplayName(displayname);
     return true;
   } on FirebaseException catch (e) {
     print(e.code);
@@ -37,12 +39,12 @@ Future<bool> loginuser(String emailid, String password) async {
   }
 }
 
-getCurrentUSer() {
+User? getCurrentUser() {
   try {
     final user = _auth.currentUser;
     if (user != null) {
       _loggedinUser = user;
-      print(_loggedinUser!.email);
+      return user;
     }
   } on Exception catch (e) {
     print(e);

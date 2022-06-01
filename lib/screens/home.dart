@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:turf_flash/widgets/post.dart';
 import 'home_body.dart';
@@ -15,8 +16,8 @@ class home extends StatefulWidget {
 }
 
 class _loginState extends State<home> {
-  String user = "Chandru";
-   int _selectedIndex = 0;
+  String user_name = "Chandru";
+  int _selectedIndex = 0;
   static List<Widget> _widgetOptions = <Widget>[
     home_body(),
     host_body(),
@@ -27,13 +28,15 @@ class _loginState extends State<home> {
       _selectedIndex = index;
     });
   }
-@override
+
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getCurrentUSer();
-
+    User? current_user = getCurrentUser();
+    user_name = current_user!.displayName!;
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,8 +59,14 @@ class _loginState extends State<home> {
         // ),
         title: Column(
           children: [
-            Text("Welcome",style: TextStyle(color: Colors.blueAccent),),
-            Text(user,style: TextStyle(color: Colors.blueAccent),),
+            Text(
+              "Welcome",
+              style: TextStyle(color: Colors.blueAccent),
+            ),
+            Text(
+              user_name,
+              style: TextStyle(color: Colors.blueAccent),
+            ),
           ],
         ),
         actions: [
@@ -92,6 +101,7 @@ class _loginState extends State<home> {
         currentIndex: _selectedIndex,
         selectedItemColor: Color.fromARGB(255, 4, 230, 15),
         onTap: _onItemTapped,
-      ),);
+      ),
+    );
   }
 }
