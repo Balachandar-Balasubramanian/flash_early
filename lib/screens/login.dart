@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:turf_flash/constants.dart';
 import 'package:turf_flash/screens/welcome.dart';
 import 'package:turf_flash/widgets/roundedbutton.dart';
-import 'package:turf_flash/services/firebase.dart';
+import 'package:turf_flash/services/authenticate.dart';
 import 'home.dart';
 
 class login extends StatefulWidget {
