@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:turf_flash/constants.dart';
 
 class post extends StatelessWidget {
-  const post({Key? key}) : super(key: key);
-
+  post({
+    required this.Club_name,
+    required this.Captian_name,
+    required this.Date,
+  });
+  final String Club_name;
+  final String Captian_name;
+  final String Date;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -34,12 +40,12 @@ class post extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          "Urapakkam FC",
+                          Club_name,
                           style: Kfont.copyWith(
                               fontSize: 30, color: Colors.deepPurple),
                         ),
                         Text(
-                          "Chandru",
+                          Captian_name,
                           style: Kfont.copyWith(
                               fontSize: 20, color: Colors.redAccent),
                         )
@@ -57,7 +63,7 @@ class post extends StatelessWidget {
                       SizedBox(
                         width: 10,
                       ),
-                      Text("31/05/22 Sunday"),
+                      Text(Date),
                     ],
                   ),
                 ),

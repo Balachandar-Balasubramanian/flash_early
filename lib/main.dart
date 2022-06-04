@@ -15,7 +15,7 @@ Future<void> main() async {
   runApp(
     MaterialApp(
       theme: ThemeData.light(),
-      title: "Crypto Converter",
+      title: "Turf Flash",
       initialRoute: splashScreen.id,
       routes: {
         splashScreen.id: (context) => splashScreen(),

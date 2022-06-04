@@ -7,6 +7,7 @@ import 'home_body.dart';
 import 'host_body.dart';
 import 'profile_body.dart';
 import 'package:turf_flash/services/authenticate.dart';
+import 'package:turf_flash/services/post_stream.dart';
 
 class home extends StatefulWidget {
   static String id = "home";
@@ -16,7 +17,7 @@ class home extends StatefulWidget {
 }
 
 class _loginState extends State<home> {
-  String user_name = "Chandru";
+  String user_name = "";
   int _selectedIndex = 0;
   static List<Widget> _widgetOptions = <Widget>[
     home_body(),
@@ -35,6 +36,7 @@ class _loginState extends State<home> {
     super.initState();
     User? current_user = getCurrentUser();
     user_name = current_user!.displayName!;
+    PostsStream();
   }
 
   @override

@@ -1,6 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:turf_flash/constants.dart';
+import 'package:turf_flash/services/Host_match.dart';
 import 'package:turf_flash/widgets/roundedbutton.dart';
+
+import '../services/authenticate.dart';
 
 class host_body extends StatefulWidget {
   @override
@@ -8,6 +13,22 @@ class host_body extends StatefulWidget {
 }
 
 class _host_bodyState extends State<host_body> {
+  String match_type = "";
+  String Club = "";
+  String Captian = "";
+  String Date = "";
+  String time = "";
+  String location = "";
+  int num = 0;
+  String host_email = '';
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    User? current_user = getCurrentUser();
+    host_email = current_user!.email!;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -40,7 +61,7 @@ class _host_bodyState extends State<host_body> {
             padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
             child: TextFormField(
               onChanged: (value) {
-                //pass = value;
+                Club = value;
               },
               textAlign: TextAlign.center,
               decoration: kTextFieldDecoration.copyWith(
@@ -56,7 +77,7 @@ class _host_bodyState extends State<host_body> {
             padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
             child: TextFormField(
               onChanged: (value) {
-                //pass = value;
+                Captian = value;
               },
               textAlign: TextAlign.center,
               decoration: kTextFieldDecoration.copyWith(
@@ -72,7 +93,7 @@ class _host_bodyState extends State<host_body> {
             padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
             child: TextFormField(
               onChanged: (value) {
-                //pass = value;
+                Date = value;
               },
               textAlign: TextAlign.center,
               decoration: kTextFieldDecoration.copyWith(
@@ -88,7 +109,7 @@ class _host_bodyState extends State<host_body> {
             padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
             child: TextFormField(
               onChanged: (value) {
-                //pass = value;
+                time = value;
               },
               textAlign: TextAlign.center,
               decoration: kTextFieldDecoration.copyWith(
@@ -104,11 +125,27 @@ class _host_bodyState extends State<host_body> {
             padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
             child: TextFormField(
               onChanged: (value) {
-                //pass = value;
+                location = value;
               },
               textAlign: TextAlign.center,
               decoration: kTextFieldDecoration.copyWith(
                 hintText: "Enter Nearby Turf",
+              ),
+            ),
+          ),
+          Text(
+            "Contact Number",
+            style: Klogo.copyWith(fontSize: 30),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+            child: TextFormField(
+              onChanged: (value) {
+                num = int.parse(value);
+              },
+              textAlign: TextAlign.center,
+              decoration: kTextFieldDecoration.copyWith(
+                hintText: "Mobile Number",
               ),
             ),
           ),
@@ -119,14 +156,20 @@ class _host_bodyState extends State<host_body> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Material(
-                    color: Colors.blueAccent,
+                    color: match_type == "5s"
+                        ? Colors.blue[800]
+                        : Colors.blueAccent,
                     elevation: 6,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(6),
                       bottomLeft: Radius.circular(6),
                     ),
                     child: MaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          match_type = "5s";
+                        });
+                      },
                       height: 30,
                       child: Text(
                         "5's",
@@ -135,10 +178,16 @@ class _host_bodyState extends State<host_body> {
                     ),
                   ),
                   Material(
-                    color: Colors.blueAccent,
+                    color: match_type == "7s"
+                        ? Colors.blue[800]
+                        : Colors.blueAccent,
                     elevation: 5,
                     child: MaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          match_type = "7s";
+                        });
+                      },
                       height: 30,
                       child: Text(
                         "7's",
@@ -147,14 +196,20 @@ class _host_bodyState extends State<host_body> {
                     ),
                   ),
                   Material(
-                    color: Colors.blueAccent,
+                    color: match_type == "11s"
+                        ? Colors.blue[800]
+                        : Colors.blueAccent,
                     elevation: 5,
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(6),
                       bottomRight: Radius.circular(6),
                     ),
                     child: MaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          match_type = "11s";
+                        });
+                      },
                       height: 30,
                       child: Text(
                         "11's",
@@ -170,7 +225,31 @@ class _host_bodyState extends State<host_body> {
             height: 10,
           ),
           RoundedButton(
-              title: 'Host', colour: Colors.blueAccent, onPressed: () {})
+            title: 'Host',
+            colour: Colors.blueAccent,
+            onPressed: () async {
+              bool t = await host(Club, Captian, Date, time, location, num,
+                  match_type, host_email);
+              if (t) {
+                showCupertinoModalPopup<void>(
+                  context: context,
+                  builder: (BuildContext context) => CupertinoAlertDialog(
+                    title: const Text('Success!!'),
+                    content: const Text('Your match request has been posted'),
+                    actions: <CupertinoDialogAction>[
+                      CupertinoDialogAction(
+                        isDestructiveAction: true,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('Okay'),
+                      )
+                    ],
+                  ),
+                );
+              }
+            },
+          ),
         ],
       ),
     );

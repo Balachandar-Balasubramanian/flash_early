@@ -89,6 +89,7 @@ class _loginState extends State<login> {
                       if (t == true) {
                         Navigator.pushReplacementNamed(context, home.id);
                       } else {
+                        Email = pass = null;
                         showCupertinoModalPopup<void>(
                           context: context,
                           builder: (BuildContext context) =>

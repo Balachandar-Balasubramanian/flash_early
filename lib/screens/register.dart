@@ -120,12 +120,30 @@ class _loginState extends State<register> {
                       pass != null &&
                       rpass != null) {
                     bool t = await signup(username!, Email!, pass!);
-                    setState(() {
-                      showSpinner = false;
-                    });
+
                     if (t == true) {
-                      Navigator.pushNamed(context, home.id);
+                      setState(() {
+                        showSpinner = false;
+                      });
+                      showCupertinoModalPopup<void>(
+                        context: context,
+                        builder: (BuildContext context) => CupertinoAlertDialog(
+                          title: const Text('Alert'),
+                          content: Text("Successfully Registered "),
+                          actions: <CupertinoDialogAction>[
+                            CupertinoDialogAction(
+                              isDestructiveAction: true,
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Okay'),
+                            )
+                          ],
+                        ),
+                      );
+                      //Navigator.pushNamed(context, home.id);
                     } else {
+                      username = pass = rpass = Email = null;
                       showCupertinoModalPopup<void>(
                         context: context,
                         builder: (BuildContext context) => CupertinoAlertDialog(
