@@ -17,6 +17,7 @@ Future<bool> signup(String displayname, String emailid, String password) async {
     print(newuser);
     User? current_user = getCurrentUser();
     current_user!.updateDisplayName(displayname);
+    current_user.updatePhotoURL('images/logo.png');
     return true;
   } on FirebaseException catch (e) {
     print(e.code);

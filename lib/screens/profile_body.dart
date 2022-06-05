@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:turf_flash/constants.dart';
 import 'package:turf_flash/widgets/post.dart';
+import 'package:turf_flash/services/post_stream.dart';
 
 class profile_body extends StatefulWidget {
   @override
@@ -61,18 +62,7 @@ class _profileState extends State<profile_body> {
               style: Klogo.copyWith(fontSize: 40),
             ),
           ),
-          ListView(
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            children: [
-              // post(),
-              // post(),
-              // post(),
-              // post(),
-              // post(),
-              // post(),
-            ],
-          )
+          PostsStream(isMe: true),
         ],
       ),
     );
