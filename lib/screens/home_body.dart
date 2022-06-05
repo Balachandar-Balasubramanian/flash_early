@@ -28,7 +28,7 @@ class home_body extends StatelessWidget {
               enlargeStrategy: CenterPageEnlargeStrategy.height,
             ),
           ),
-          PostsStream(),
+          PostsStream(isMe: false),
         ],
       ),
     );

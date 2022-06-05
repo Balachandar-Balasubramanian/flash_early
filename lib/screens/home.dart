@@ -36,7 +36,7 @@ class _loginState extends State<home> {
     super.initState();
     User? current_user = getCurrentUser();
     user_name = current_user!.displayName!;
-    PostsStream();
+    //PostsStream();
   }
 
   @override

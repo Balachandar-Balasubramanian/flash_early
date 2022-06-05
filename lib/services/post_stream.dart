@@ -9,6 +9,10 @@ import 'authenticate.dart';
 
 class PostsStream extends StatelessWidget {
   User? current_user = getCurrentUser();
+  PostsStream({@required isMe}) {
+    isMy = isMe;
+  }
+  bool? isMy;
 
   final _firestore = FirebaseFirestore.instance;
   @override
@@ -32,7 +36,19 @@ class PostsStream extends StatelessWidget {
           shrinkWrap: true,
           itemCount: data.size,
           itemBuilder: (context, index) {
-            if (data.docs[index]['host_email'] != current_user!.email!) {
+            print(isMy);
+            if (data.docs[index]['host_email'] != current_user!.email! &&
+                isMy == false) {
+              print(isMy);
+              return post(
+                Club_name: data.docs[index]['club name'],
+                Captian_name: data.docs[index]['captian name'],
+                Date: data.docs[index]['Date'],
+              );
+            }
+            if (data.docs[index]['host_email'] == current_user!.email! &&
+                isMy == true) {
+              print(isMy);
               return post(
                 Club_name: data.docs[index]['club name'],
                 Captian_name: data.docs[index]['captian name'],
