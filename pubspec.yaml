@@ -74,6 +74,7 @@ flutter:
     - images/ad3.jpg
     - images/ad4.jpg
     - images/ad5.jpg
+    - images/default_teamphoto.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
