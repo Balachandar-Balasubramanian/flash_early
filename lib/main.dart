@@ -3,6 +3,7 @@ import 'package:turf_flash/screens/welcome.dart';
 import 'screens/home.dart';
 import 'screens/splashScreen.dart';
 import 'screens/login.dart';
+import 'screens/detail_page.dart';
 import 'screens/register.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -23,6 +24,7 @@ Future<void> main() async {
         welcome.id: (context) => welcome(),
         login.id: (context) => login(),
         register.id: (context) => register(),
+        detail_page.id: (context) => detail_page(),
       },
     ),
   );
