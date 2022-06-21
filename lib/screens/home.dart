@@ -2,12 +2,10 @@ import 'dart:ui';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:turf_flash/widgets/post.dart';
 import 'home_body.dart';
 import 'host_body.dart';
 import 'profile_body.dart';
 import 'package:turf_flash/services/authenticate.dart';
-import 'package:turf_flash/services/post_stream.dart';
 
 class home extends StatefulWidget {
   static String id = "home";
@@ -45,36 +43,27 @@ class _loginState extends State<home> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         titleSpacing: 0.0,
-        leading: Icon(
+        leading: const Icon(
           Icons.electric_bolt,
           size: 30,
           color: Colors.yellow,
         ),
-        //Hero(
-        //   tag: 'logo',
-        //   child: Flexible(
-        //     child: Container(
-        //       height: 30,
-        //       child: Image.asset('images/logo.png'),
-        //     ),
-        //   ),
-        // ),
         title: Column(
           children: [
-            Text(
+            const Text(
               "Welcome",
               style: TextStyle(color: Colors.blueAccent),
             ),
             Text(
               user_name,
-              style: TextStyle(color: Colors.blueAccent),
+              style: const TextStyle(color: Colors.blueAccent),
             ),
           ],
         ),
         actions: [
           MaterialButton(
             onPressed: (() {}),
-            child: Icon(
+            child: const Icon(
               Icons.quickreply,
               size: 30,
               color: Colors.blueAccent,
@@ -101,7 +90,7 @@ class _loginState extends State<home> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromARGB(255, 4, 230, 15),
+        selectedItemColor: const Color.fromARGB(255, 4, 230, 15),
         onTap: _onItemTapped,
       ),
     );

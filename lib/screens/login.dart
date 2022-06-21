@@ -27,7 +27,8 @@ class _loginState extends State<login> {
             child: SingleChildScrollView(
           reverse: true,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            // mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Hero(
                 tag: 'logo',

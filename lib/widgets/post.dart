@@ -7,15 +7,36 @@ class post extends StatelessWidget {
     required this.Club_name,
     required this.Captian_name,
     required this.Date,
+    required this.Time,
+    required this.location,
+    required this.Match,
+    required this.Mobile,
   });
   final String Club_name;
   final String Captian_name;
   final String Date;
+  final String Time;
+  final String location;
+  final String Match;
+  final int Mobile;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, detail_page.id);
+        //Navigator.pushNamed(context, detail_page.id);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => detail_page(
+                    Captian_name: Captian_name,
+                    Date: Date,
+                    Match: Match,
+                    Mobile: Mobile,
+                    Time: Time,
+                    location: location,
+                    Club_name: Club_name,
+                  )),
+        );
       },
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
@@ -53,7 +74,7 @@ class post extends StatelessWidget {
                             Captian_name,
                             style: Kfont.copyWith(
                                 fontSize: 20, color: Colors.redAccent),
-                          )
+                          ),
                         ],
                       ),
                     ],

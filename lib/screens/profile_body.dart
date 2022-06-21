@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:turf_flash/constants.dart';
 import 'package:turf_flash/widgets/post.dart';
 import 'package:turf_flash/services/post_stream.dart';
+
+import '../services/authenticate.dart';
 
 class profile_body extends StatefulWidget {
   @override
@@ -9,6 +12,17 @@ class profile_body extends StatefulWidget {
 }
 
 class _profileState extends State<profile_body> {
+  String user_name = '';
+  String user_email = '';
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    User? current_user = getCurrentUser();
+    user_name = current_user!.displayName!;
+    user_email = current_user.email!;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -34,12 +48,12 @@ class _profileState extends State<profile_body> {
                     ),
                   ),
                   Text(
-                    "CHANDRU",
+                    user_name,
                     style: Klogo.copyWith(
                         fontSize: 30, color: Colors.purpleAccent),
                   ),
                   Text(
-                    "Sample@email.com",
+                    user_email,
                     style:
                         Klogo.copyWith(fontSize: 20, color: Colors.redAccent),
                   ),

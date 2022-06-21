@@ -143,6 +143,9 @@ class _loginState extends State<register> {
                       );
                       //Navigator.pushNamed(context, home.id);
                     } else {
+                      setState(() {
+                        showSpinner = false;
+                      });
                       username = pass = rpass = Email = null;
                       showCupertinoModalPopup<void>(
                         context: context,

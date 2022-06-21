@@ -7,6 +7,7 @@ import 'screens/detail_page.dart';
 import 'screens/register.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import '';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +25,6 @@ Future<void> main() async {
         welcome.id: (context) => welcome(),
         login.id: (context) => login(),
         register.id: (context) => register(),
-        detail_page.id: (context) => detail_page(),
       },
     ),
   );

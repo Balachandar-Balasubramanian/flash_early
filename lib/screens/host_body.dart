@@ -13,13 +13,13 @@ class host_body extends StatefulWidget {
 }
 
 class _host_bodyState extends State<host_body> {
-  String match_type = "";
-  String Club = "";
-  String Captian = "";
-  String Date = "";
-  String time = "";
-  String location = "";
-  int num = 0;
+  String? match_type;
+  String? Club;
+  String? Captian;
+  String? Date;
+  String? time;
+  String? location;
+  int? num;
   String host_email = '';
   @override
   void initState() {
@@ -228,14 +228,38 @@ class _host_bodyState extends State<host_body> {
             title: 'Host',
             colour: Colors.blueAccent,
             onPressed: () async {
-              bool t = await host(Club, Captian, Date, time, location, num,
-                  match_type, host_email);
-              if (t) {
+              if (Club != null &&
+                  Captian != null &&
+                  Date != null &&
+                  time != null &&
+                  location != null &&
+                  num != null) {
+                bool t = await host(Club!, Captian!, Date!, time!, location!,
+                    num!, match_type!, host_email);
+                if (t) {
+                  showCupertinoModalPopup<void>(
+                    context: context,
+                    builder: (BuildContext context) => CupertinoAlertDialog(
+                      title: const Text('Success!!'),
+                      content: const Text('Your match request has been posted'),
+                      actions: <CupertinoDialogAction>[
+                        CupertinoDialogAction(
+                          isDestructiveAction: true,
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text('Okay'),
+                        )
+                      ],
+                    ),
+                  );
+                }
+              } else {
                 showCupertinoModalPopup<void>(
                   context: context,
                   builder: (BuildContext context) => CupertinoAlertDialog(
-                    title: const Text('Success!!'),
-                    content: const Text('Your match request has been posted'),
+                    title: const Text('Alert'),
+                    content: const Text('Please enter all fields'),
                     actions: <CupertinoDialogAction>[
                       CupertinoDialogAction(
                         isDestructiveAction: true,

@@ -41,6 +41,10 @@ class PostsStream extends StatelessWidget {
                 isMy == false) {
               print(isMy);
               return post(
+                location: data.docs[index]['location'],
+                Mobile: data.docs[index]['contact number'],
+                Time: data.docs[index]['time'],
+                Match: data.docs[index]['match type'],
                 Club_name: data.docs[index]['club name'],
                 Captian_name: data.docs[index]['captian name'],
                 Date: data.docs[index]['Date'],
@@ -50,6 +54,10 @@ class PostsStream extends StatelessWidget {
                 isMy == true) {
               print(isMy);
               return post(
+                location: data.docs[index]['location'],
+                Mobile: data.docs[index]['contact number'],
+                Time: data.docs[index]['time'],
+                Match: data.docs[index]['match type'],
                 Club_name: data.docs[index]['club name'],
                 Captian_name: data.docs[index]['captian name'],
                 Date: data.docs[index]['Date'],

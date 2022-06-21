@@ -7,6 +7,7 @@ String? register_ERROR;
 String? login_ERROR;
 final _auth = FirebaseAuth.instance;
 User? _loggedinUser;
+
 Future<bool> signup(String displayname, String emailid, String password) async {
   try {
     print(displayname);
@@ -23,8 +24,6 @@ Future<bool> signup(String displayname, String emailid, String password) async {
     print(e.code);
     register_ERROR = e.code;
     return false;
-
-    // TODO
   }
 }
 
@@ -36,7 +35,6 @@ Future<bool> loginuser(String emailid, String password) async {
   } on FirebaseException catch (e) {
     login_ERROR = e.code;
     return false;
-    // TODO
   }
 }
 
