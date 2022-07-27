@@ -1,16 +1,14 @@
 # turf_flash
 
-A new Flutter project.
+ I have created an app which lets local football clubs to post match request and it will be shown in other user's feed and interested ones can contact them using call option.... And I have added Caurosel in feed also to display nearby turf ads, which can be used to generate revenue 
 
-## Getting Started
+## Demo
 
-This project is a starting point for a Flutter application.
+https://user-images.githubusercontent.com/66508521/181260005-8e7a87ed-59c3-4fd6-b7b2-5f90af208307.mp4
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+This app uses:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Firebase Authentication
+- Firestore
+- Flutter
